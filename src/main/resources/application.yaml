@@ -1,0 +1,15 @@
+db:
+  changelog-master:
+    yaml:
+spring:
+  application:
+    name: football
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://localhost:5432/football_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
