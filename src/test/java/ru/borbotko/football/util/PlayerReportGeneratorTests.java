@@ -3,8 +3,10 @@ package ru.borbotko.football.util;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import lombok.SneakyThrows;
+import org.bouncycastle.util.Strings;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -94,8 +96,8 @@ public class PlayerReportGeneratorTests {
     String expected =
         new String(
             StreamUtils.copyToByteArray(
-                new ClassPathResource(EXPECTED_FILE_NAME).getInputStream()));
-    String actual = new String(Files.readAllBytes(Paths.get(ACTUAL_FILE_NAME)));
+                new ClassPathResource(EXPECTED_FILE_NAME).getInputStream())).replace("\r", "");
+    String actual = new String(Files.readAllBytes(Paths.get(ACTUAL_FILE_NAME))).replace("\r", "");
     Files.delete(Paths.get(ACTUAL_FILE_NAME));
 
     Assertions.assertEquals(expected, actual);

@@ -68,8 +68,10 @@ public class AmpluaXMLHandlerTests {
 
     String expected =
         new String(
-            StreamUtils.copyToByteArray(new ClassPathResource(EXAMPLE_FILE_NAME).getInputStream()));
-    String actual = new String(Files.readAllBytes(Paths.get(ACTUAL_FILE_NAME)));
+                StreamUtils.copyToByteArray(
+                    new ClassPathResource(EXAMPLE_FILE_NAME).getInputStream()))
+            .replace("\r", "");
+    String actual = new String(Files.readAllBytes(Paths.get(ACTUAL_FILE_NAME))).replace("\r", "");
     Files.delete(Paths.get(ACTUAL_FILE_NAME));
 
     Assertions.assertEquals(expected, actual);

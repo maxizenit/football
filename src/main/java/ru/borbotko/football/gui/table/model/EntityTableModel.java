@@ -90,19 +90,13 @@ public abstract class EntityTableModel<T> extends DefaultTableModel {
       return;
     }
 
-    List<T> newEntities = new CopyOnWriteArrayList<>();
+    List<T> newEntities = new ArrayList<>();
 
-    entities.parallelStream()
-        .forEach(
-            e -> {
-              try {
-                if (filter.isFiltered(e)) {
-                  newEntities.add(e);
-                }
-              } catch (InvalidFieldException ex) {
-                throw new RuntimeException(ex);
-              }
-            });
+    for (T entity : entities) {
+      if (filter.isFiltered(entity)) {
+        newEntities.add(entity);
+      }
+    }
 
     oldEntities = new ArrayList<>(entities);
     entities = newEntities;

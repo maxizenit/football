@@ -234,7 +234,7 @@ public class MainForm extends JFrame {
 
           try {
             playersTable.filter(filter);
-          } catch (InvalidFieldException e) {
+          } catch (InvalidFieldException | RuntimeException e) {
             showMessageDialog(e.getMessage());
           }
         });
@@ -503,7 +503,7 @@ public class MainForm extends JFrame {
         rootPanel.setMinimumSize(new Dimension(600, 400));
         rootPanel.setPreferredSize(new Dimension(600, 400));
         final JTabbedPane tabbedPane1 = new JTabbedPane();
-        rootPanel.add(tabbedPane1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(200, 200), null, 0, false));
+        rootPanel.add(tabbedPane1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(200, 200), null, 0, false));
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(2, 2, new Insets(0, 0, 0, 0), -1, -1));
         tabbedPane1.addTab("Игроки", panel1);
